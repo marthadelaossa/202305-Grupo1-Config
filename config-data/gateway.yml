@@ -1,0 +1,43 @@
+server:
+  port: ${PORT:${SERVER_PORT:8080}}
+
+spring:
+  application:
+    name: gateway
+  cloud:    
+    gateway:      
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: ms-api-check
+          uri: lb://api-check
+          predicates:
+            - Path=/api/v1/api-check/**
+        - id: ms-api-customer
+          uri: lb://api-customer
+          predicates:
+            - Path=/api/v1/api-customer/**
+        - id: ms-api-provider
+          uri: lb://api-provider
+          predicates:
+            - Path=/api/v1/api-provider/**
+
+info:
+  app:
+    name: ${spring.application.name}
+
+eureka:
+   client:
+      registerWithEureka: false
+      fetchRegistry: true
+      serviceURL:
+         defaultZone: http://localhost:8761/eureka
+management:
+   endpoint:
+      gateway:
+         enabled: true
+   endpoints:
+      web:
+         exposure:
+            include: gateway
