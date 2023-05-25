@@ -13,15 +13,15 @@ spring:
         - id: ms-api-check
           uri: lb://api-check
           predicates:
-            - Path=/api/v1/api-check/**
+            - Path=/api/v1/check/**
         - id: ms-api-customer
           uri: lb://api-customer
           predicates:
-            - Path=/api/v1/api-customer/**
+            - Path=/api/v1/customer/**
         - id: ms-api-provider
           uri: lb://api-provider
           predicates:
-            - Path=/api/v1/api-provider/**
+            - Path=/api/v1/provider/**
 
 info:
   app:
