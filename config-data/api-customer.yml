@@ -39,7 +39,7 @@ resilience4j:
           - java.io.IOException
           - java.net.SocketTimeoutException
       instances:
-        retryCheck:
+        retryCustomer:
           base-config: default
           max-retry-attempts: 5
           wait-duration: 2s
@@ -56,7 +56,7 @@ resilience4j:
         automatic-transition-from-open-to-half-open-enabled: true
         failure-rate-threshold: 50
     instances:
-      checkSearch:
+      createCustomer:
         base-config: default
         sliding-window-type: COUNT_BASED
         sliding-window-size: 5
