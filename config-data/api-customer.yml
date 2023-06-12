@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: api-customer
+  zipkin:
+    baseUrl: http://localhost:9411/
   data:
     mongodb:
       username: usr-customer-mongo
